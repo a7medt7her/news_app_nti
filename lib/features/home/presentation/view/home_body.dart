@@ -31,6 +31,7 @@ class HomeBody extends StatelessWidget {
         BlocProvider(
           create: (_) => WeatherCubit()..getWeather(30.5877893, 31.4798788),
         ),
+        BlocProvider(create: (_) => PagesCubit()),
       ],
       child: Scaffold(
         appBar: AppBar(

@@ -5,9 +5,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:news_app_nti/core/helper/svg_helper.dart';
 import 'package:news_app_nti/core/unitles/app_assets.dart';
 import 'package:news_app_nti/core/unitles/app_colors.dart';
+import 'package:news_app_nti/features/book_mark/presentation/view/book_mark_view.dart';
 import 'package:news_app_nti/features/explor/presentation/view/explore_view.dart';
 import 'package:news_app_nti/features/home/presentation/view/home_body.dart';
 import 'package:news_app_nti/features/home/presentation/view_model/page_control/cubit/pages_cubit.dart';
+import 'package:news_app_nti/features/weather/presentation/view/wearher_view.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -16,7 +18,7 @@ class HomeView extends StatefulWidget {
   State<HomeView> createState() => _HomeState();
 }
 
-List<Widget> pages = [HomeBody(), ExploreView()];
+List<Widget> pages = [HomeBody(), ExploreView(), BookMarkView(), WeatherView()];
 
 class _HomeState extends State<HomeView> {
   @override
@@ -68,7 +70,7 @@ class _HomeState extends State<HomeView> {
                 ),
                 BottomNavigationBarItem(
                   activeIcon: Container(
-                    margin: REdgeInsets.only(top: 20),
+                    margin: REdgeInsets.only(top: 15),
                     padding: REdgeInsets.symmetric(
                       horizontal: 16,
                       vertical: 15,

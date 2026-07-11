@@ -6,8 +6,10 @@ import 'package:news_app_nti/core/unitles/app_assets.dart';
 import 'package:news_app_nti/core/unitles/app_colors.dart';
 import 'package:news_app_nti/core/unitles/app_padding.dart';
 import 'package:news_app_nti/core/widgets/auth_shape.dart';
+import 'package:news_app_nti/core/widgets/frame.dart';
+import 'package:news_app_nti/features/book_mark/presentation/view/book_mark_view.dart';
 
-class ArticlesPage extends StatelessWidget {
+class ArticlesPage extends StatefulWidget {
   const ArticlesPage({
     super.key,
     required this.title,
@@ -23,6 +25,14 @@ class ArticlesPage extends StatelessWidget {
   final String nameAuth;
   final String publishedAt;
   final String content;
+
+  @override
+  State<ArticlesPage> createState() => _ArticlesPageState();
+}
+
+bool isBooked = false;
+
+class _ArticlesPageState extends State<ArticlesPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,7 +49,7 @@ class ArticlesPage extends StatelessWidget {
                       decoration: BoxDecoration(
                         image: DecorationImage(
                           fit: BoxFit.cover,
-                          image: NetworkImage(imageUlr),
+                          image: NetworkImage(widget.imageUlr),
                         ),
                       ),
                     ),
@@ -86,12 +96,39 @@ class ArticlesPage extends StatelessWidget {
                           ),
                           Spacer(),
                           IconButton(
-                            onPressed: () {},
-                            icon: svgHelper(
-                              AppAssetsIcons.BookmarkIconly,
-                              15.941399574279785.w,
-                              20.h,
-                            ),
+                            onPressed: () {
+                              setState(() {
+                                isBooked = !isBooked;
+                              });
+                              isBooked
+                                  ? bookMark.add(
+                                      Frame(
+                                        title: widget.title,
+                                        nameAuth: widget.nameAuth,
+                                        publishedAt: widget.publishedAt,
+                                        imageUrl: widget.imageUlr,
+                                      ),
+                                    )
+                                  : bookMark.remove(
+                                      Frame(
+                                        title: widget.title,
+                                        nameAuth: widget.nameAuth,
+                                        publishedAt: widget.publishedAt,
+                                        imageUrl: widget.imageUlr,
+                                      ),
+                                    );
+                            },
+                            icon: isBooked
+                                ? svgHelper(
+                                    AppAssetsIcons.booked,
+                                    15.941399574279785.w,
+                                    20.h,
+                                  )
+                                : svgHelper(
+                                    AppAssetsIcons.BookmarkIconly,
+                                    15.941399574279785.w,
+                                    20.h,
+                                  ),
                           ),
                           SizedBox(width: 12.w),
                           IconButton(
@@ -112,7 +149,7 @@ class ArticlesPage extends StatelessWidget {
                       child: Column(
                         children: [
                           Text(
-                            title,
+                            widget.title,
 
                             style: TextStyle(
                               fontSize: 32.sp,
@@ -123,12 +160,12 @@ class ArticlesPage extends StatelessWidget {
 
                           SizedBox(height: 16.h),
                           AuthShape(
-                            nameAuth: nameAuth,
-                            publishedAt: publishedAt,
+                            nameAuth: widget.nameAuth,
+                            publishedAt: widget.publishedAt,
                           ),
                           SizedBox(height: 27.h),
                           Text(
-                            description,
+                            widget.description,
 
                             style: TextStyle(
                               fontSize: 16.sp,
@@ -138,7 +175,7 @@ class ArticlesPage extends StatelessWidget {
                           ),
                           SizedBox(height: 15),
                           Text(
-                            content,
+                            widget.content,
 
                             style: TextStyle(
                               fontSize: 16.sp,
