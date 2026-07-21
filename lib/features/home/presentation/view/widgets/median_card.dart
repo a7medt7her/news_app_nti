@@ -35,15 +35,16 @@ class MedianCard extends StatelessWidget {
             ),
           ),
         ),
-        SizedBox(
-          width: 269.w,
-
-          child: Text(
-            title ?? '',
-            style: TextStyle(
-              fontSize: 20.sp,
-              fontWeight: FontWeight.w600,
-              color: AppColors.primaryText,
+        Expanded(
+          child: SizedBox(
+            width: 200,
+            child: Text(
+              title ?? '',
+              style: TextStyle(
+                fontSize: 20.sp,
+                fontWeight: FontWeight.w600,
+                color: AppColors.primaryText,
+              ),
             ),
           ),
         ),

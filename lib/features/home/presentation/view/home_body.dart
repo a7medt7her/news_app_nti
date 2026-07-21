@@ -186,7 +186,7 @@ class HomeBody extends StatelessWidget {
                         }
                         if (state is EverythingSuccess) {
                           return SizedBox(
-                            height: 350.h,
+                            height: 390.h,
                             child: ListView.separated(
                               scrollDirection: Axis.horizontal,
                               itemBuilder: (context, index) {
