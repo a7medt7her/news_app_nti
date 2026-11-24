@@ -1,7 +1,10 @@
 import 'package:dio/dio.dart';
 
-String newsApiKey = '836086f05b344448a16dd41ee51c6320';
-String weatherApiKey = '39ef56aa87e0f9d833e66cd9111de959';
+// Keys are supplied at build time and are not stored in the repository:
+//   flutter run --dart-define-from-file=env.json
+const String newsApiKey = String.fromEnvironment('NEWS_API_KEY');
+const String weatherApiKey = String.fromEnvironment('WEATHER_API_KEY');
+
 Dio dio = Dio(BaseOptions(baseUrl: 'https://newsapi.org/v2/'));
 Dio dioWeather = Dio(
   BaseOptions(baseUrl: 'https://api.openweathermap.org/data/2.5/'),
