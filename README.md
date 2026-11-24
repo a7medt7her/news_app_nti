@@ -1,17 +1,21 @@
-# news_app_nti
+# News App
 
-A new Flutter project.
+A Flutter app that shows news headlines and local weather from public APIs.
 
-## Getting Started
+## Features
+- Top headlines by category (NewsAPI `top-headlines`)
+- Explore and search articles (NewsAPI `everything`, with sorting)
+- Weather screen using OpenWeatherMap current weather by latitude and longitude
+- Splash and start screens
 
-This project is a starting point for a Flutter application.
+## Tech stack
+Flutter, Dart, flutter_bloc (Cubit), Dio, Dartz, flutter_screenutil, flutter_svg, intl
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Run it
+1. Get your own API keys from [NewsAPI](https://newsapi.org) and [OpenWeatherMap](https://openweathermap.org/api).
+2. Copy `env.example.json` to `env.json` and fill in the keys. `env.json` is git-ignored.
+3. Run:
+```
+flutter pub get
+flutter run --dart-define-from-file=env.json
+```
