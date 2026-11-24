@@ -1,4 +1,4 @@
-# News App
+<img src="assets/banner.svg" alt="news_app_nti" width="100%">
 
 A Flutter app that shows news headlines and local weather from public APIs.
 
